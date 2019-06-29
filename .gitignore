@@ -1,43 +1,30 @@
-  GNU nano 4.2                       .gitignore
 # Built application files
-build/
-*.apk
-*.ap_
-*.aab
+/*/build/
 
-# Files for the ART/Dalvik VM
-*.dex
-
-# External native build folder generated in Android Studio 2.2 and later
-.externalNativeBuild
+# Crashlytics configuations
+com_crashlytics_export_strings.xml
 
 # Local configuration file (sdk path, etc)
 local.properties
 
-# Gradle files
+# Gradle generated files
 .gradle/
+build/
+gradle/
+gradlew
+gradle.properties
+gradlew.bat
+
+app/libs
+app/src/test/
+app/src/androidTest/
 
 # Signing files
 .signing/
 
 # User-specific configurations
+.idea/
 *.iml
-# Log Files
-*.log
-
-# Android Studio Navigation editor temp files
-.navigation/
-
-# Android Studio captures folder
-captures/
-
-# Keystore files
-# Uncomment the following lines if you do not want to check your keystore files in.
-*.jks
-*.keystore
-
-# Google Services (e.g. APIs or Firebase)
-google-services.json
 
 # OS-specific files
 .DS_Store
@@ -47,13 +34,3 @@ google-services.json
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# Version control
-vcs.xml
-
-# lint
-lint/intermediates/
-lint/generated/
-lint/outputs/
-lint/tmp/
-lint/reports/
