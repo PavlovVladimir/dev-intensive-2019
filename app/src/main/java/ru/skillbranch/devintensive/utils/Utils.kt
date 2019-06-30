@@ -19,7 +19,7 @@ object Utils {
         return "translit"
     }
 
-    fun toInintials(firstName: String?, lastName: String?): String? {
+    fun toInitials(firstName: String?, lastName: String?): String? {
 //TODO make IT!!!
         val firstLetter   = firstName?.getOrNull(0)//.toString().toUpperCase()
         val secondLetter  = lastName?.getOrNull(0)//.toString().toUpperCase()
