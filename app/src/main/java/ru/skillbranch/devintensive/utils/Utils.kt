@@ -107,7 +107,9 @@ object Utils {
 
         when (firstLetter){
           in 'a'..'z' -> initials = firstLetter.toString().toUpperCase()
+            in 'а'..'я' -> initials = firstLetter.toString().toUpperCase()
           in 'A'..'Z' ->initials = firstLetter.toString()
+            in 'А'..'Я' -> initials = firstLetter.toString()
             else -> {when (secondLetter){
                 in 'a'..'z' -> return secondLetter.toString().toUpperCase()
                 in 'A'..'Z' -> return secondLetter.toString()
@@ -117,7 +119,9 @@ object Utils {
 
         when (secondLetter){
             in 'a'..'z' -> initials = initials + secondLetter.toString().toUpperCase()
+            in 'а'..'я' -> initials = initials + secondLetter.toString().toUpperCase()
             in 'A'..'Z'  -> initials = initials + secondLetter.toString()
+            in 'А'..'Я' -> initials = initials + secondLetter.toString()
             else -> return initials
         }
 
