@@ -100,7 +100,7 @@ object Utils {
 
     fun toInitials(firstName: String?, lastName: String?): String? {
 
-        val firstLetter   = firstName?.getOrNull(0)//.toString().toUpperCase()
+        val firstLetter   = firstName?.getOrNull(0)//.toUpperCase()
         val secondLetter  = lastName?.getOrNull(0)//.toString().toUpperCase()
         var initials:String? = null
 
@@ -112,7 +112,9 @@ object Utils {
             in 'А'..'Я' -> initials = firstLetter.toString()
             else -> {when (secondLetter){
                 in 'a'..'z' -> return secondLetter.toString().toUpperCase()
+                in 'а'..'я' -> return secondLetter.toString().toUpperCase()
                 in 'A'..'Z' -> return secondLetter.toString()
+                in 'А'..'Я' -> return secondLetter.toString()
                 else -> return null
             }}
         }
