@@ -31,7 +31,7 @@ fun Date.add (value:Int, units: TimeUnits = TimeUnits.SECOND):Date {
 }
 
 fun Date.humanizeDiff(date: Date = Date()):String {
-//TODO make IT!
+
         val time = date.time
         val diffSec = if(time>getTime()){(time - getTime())/1000}else{(time-getTime())/1000-1}
         val diffMin = diffSec/60
