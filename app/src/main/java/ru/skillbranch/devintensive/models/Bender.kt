@@ -21,19 +21,19 @@ class Bender (var status:Status=Status.NORMAL, var question: Question=Question.N
     }
 
     fun listenAnswer (answer:String) : Pair<String,Triple<Int,Int,Int>>{
-
+        if (question==Question.IDLE){return "На этом все, вопросов больше нет" to status.color}
         if (positiveTmer == 6) {
             positiveTmer = 1
             status = Status.NORMAL
             question = Question.IDLE
             return "Отлично - ты справился\n${question.question}" to status.color
         }
-        if (negativeTimer ==4) {
-            negativeTimer = 1
-            status = Status.NORMAL
-            question = Question.NAME
-            return "Это неправильный ответ. Давай все по новой\n${question.question}" to status.color
-        }
+//        if (negativeTimer ==4) {
+//            negativeTimer = 1
+//            status = Status.NORMAL
+//            question = Question.NAME
+//            return "Это неправильный ответ. Давай все по новой\nКак меня зовут?" to status.color
+//        }
 
         when (question){
 
@@ -63,8 +63,8 @@ class Bender (var status:Status=Status.NORMAL, var question: Question=Question.N
             }
 
             Question.SERIAL     ->{
-                regex = Regex(pattern = "\\D")
-                if ((regex.containsMatchIn(input = answer))or (answer.length !== 7)) {
+                regex = Regex(pattern = "\\d{7}")
+                if (!regex.containsMatchIn(input = answer)) {
 
                     return "Серийный номер содержит только цифры, и их 7\n" +
                         "${question.question}" to status.color}
@@ -76,7 +76,11 @@ class Bender (var status:Status=Status.NORMAL, var question: Question=Question.N
             positiveTmer ++
             question = question.nextQuestion()
             "Отлично - ты справился\n${question.question}" to status.color
-        }else{
+        }else{ if (status==Status.CRITICAL){
+            status=Status.NORMAL
+            question = Question.NAME
+            return "Это неправильный ответ. Давай все по новой\nКак меня зовут?" to status.color}
+
             negativeTimer ++
             status = status.nextStatus()
             "Это неправильный ответ\n${question.question}" to status.color

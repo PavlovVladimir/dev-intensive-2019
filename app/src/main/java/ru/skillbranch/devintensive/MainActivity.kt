@@ -60,8 +60,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, TextView.OnEdito
 
         val status = savedInstanceState?.getString("STATUS") ?: Bender.Status.NORMAL.name
         val question = savedInstanceState?.getString("QUESTION") ?: Bender.Question.NAME.name
+//        val positiveTimer = savedInstanceState?.getInt("POSTIMER") ?: benderObj.positiveTmer
+//        val negativeTimer = savedInstanceState?.getInt("NEGTIMER") ?: benderObj.negativeTimer
 
         benderObj = Bender(Bender.Status.valueOf(status), Bender.Question.valueOf(question))
+//        benderObj.negativeTimer = negativeTimer
+//        benderObj.positiveTmer = positiveTimer
 
         val (r, g, b) = benderObj.status.color
         benderImage.setColorFilter(Color.rgb(r, g, b), PorterDuff.Mode.MULTIPLY)
@@ -113,6 +117,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, TextView.OnEdito
         super.onSaveInstanceState(outState)
         outState?.putString("STATUS", benderObj.status.name)
         outState?.putString("QUESTION", benderObj.question.name)
+//        outState?.putInt("NEGTIMER", benderObj.negativeTimer)
+//        outState?.putInt("POSTIMER", benderObj.positiveTmer)
         Log.d("M_MainActivity", "onSaveInstanceState ${benderObj.status.name} ${benderObj.question.name}")
     }
 
