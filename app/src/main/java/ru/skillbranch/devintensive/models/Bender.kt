@@ -75,7 +75,7 @@ class Bender (var status:Status=Status.NORMAL, var question: Question=Question.N
         return if (question.answers.contains(answer.toLowerCase())){
             positiveTmer ++
             question = question.nextQuestion()
-            "Отлично, ты справился\n${question.question}" to status.color
+            "Отлично - ты справился\n${question.question}" to status.color
         }else{
             negativeTimer ++
             status = status.nextStatus()
