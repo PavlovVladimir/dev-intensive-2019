@@ -72,7 +72,7 @@ class Bender (var status:Status=Status.NORMAL, var question: Question=Question.N
 
         }
 
-        return if (question.answers.contains(answer)){
+        return if (question.answers.contains(answer.toLowerCase())){
             positiveTmer ++
             question = question.nextQuestion()
             "Отлично, ты справился\n${question.question}" to status.color
@@ -105,7 +105,7 @@ class Bender (var status:Status=Status.NORMAL, var question: Question=Question.N
     }
 
     enum class Question (val question: String, val answers:List<String>){
-        NAME("Как меня зовут?", listOf("Бендер","Bender")) {
+        NAME("Как меня зовут?", listOf("бендер","bender")) {
             override fun nextQuestion(): Question = PROFESSION },
 
         PROFESSION ("Назови мою профессию?", listOf("сгибальщик","bender")){
