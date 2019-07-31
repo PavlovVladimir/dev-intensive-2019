@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AspectRatioImageView">
+        <attr name="aspectRatio" format="float"/>
+    </declare-styleable>
+
+    <attr name="colorAccentedSurface" format="reference"/>
+    <attr name="colorDivider" format="reference"/>
+    <attr name="colorIcon" format="reference"/>
+
+
+    <declare-styleable name="CircleImageView">
+        <attr name="cv_borderWidth" format="dimension" />
+        <attr name="cv_borderColor" format="color" />
+        <attr name="cv_text" format="string"/>
+        <attr name="cv_textSize" format="dimension"/>
+        <attr name="cv_textColor" format="color"/>
+    </declare-styleable>
+
+
+
+
+</resources>
