@@ -16,7 +16,7 @@
             android:scaleType="centerCrop"
             app:layout_constraintDimensionRatio="16:9"
             app:layout_constraintHorizontal_bias="1.0"/>
-    <ImageView
+    <ru.skillbranch.devintensive.ui.custom.CircleImageView
             android:layout_width="@dimen/avatar_round_size"
             android:layout_height="@dimen/avatar_round_size"
             app:srcCompat="@drawable/avatar_default"
@@ -180,7 +180,7 @@
                 android:id="@+id/et_about"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/profile_hint_about" style="@style/Profile.EditText.Single"
+                android:hint="@string/profile_hint_about" style="@style/Profile.EditText.MultiLine"
                 tools:text="Something else"/>
     </com.google.android.material.textfield.TextInputLayout>
     <View
