@@ -16,7 +16,7 @@
             android:scaleType="centerCrop"
             app:layout_constraintDimensionRatio="16:9"
             app:layout_constraintHorizontal_bias="1.0"/>
-    <ru.skillbranch.devintensive.ui.custom.CircleImageView
+    <ImageView
             android:layout_width="@dimen/avatar_round_size"
             android:layout_height="@dimen/avatar_round_size"
             app:srcCompat="@drawable/avatar_default"
