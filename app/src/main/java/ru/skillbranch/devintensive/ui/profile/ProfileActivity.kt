@@ -49,7 +49,7 @@ class ProfileActivity : AppCompatActivity() {
         viewModel.getProfileData().observe(this, Observer { updateUI(it) })
         viewModel.getTheme().observe(this, Observer { updateTheme(it) })
         viewModel.getRepoError().observe(this, Observer { updateRepoError(it) })
-        viewModel.getIsRepoError().observe(this, Observer { updateRepository(it) })
+        
     }
 
     private fun updateTheme(mode: Int) {
