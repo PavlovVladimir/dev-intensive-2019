@@ -7,11 +7,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ru.skillbranch.devintensive.models.Profile
 import ru.skillbranch.devintensive.repositories.PreferencesRepository
+import ru.skillbranch.devintensive.utils.Utils
+
 
 class ProfileViewModel : ViewModel() {
     private val repository: PreferencesRepository = PreferencesRepository
     private val profileData = MutableLiveData<Profile>()
     private val appTheme = MutableLiveData<Int>()
+    private val repositoryError = MutableLiveData<Boolean>()
+    private val isRepoError = MutableLiveData<Boolean>()
 
     init {
         Log.d("M_ProfileViewModel", "init view model")
@@ -21,12 +25,13 @@ class ProfileViewModel : ViewModel() {
 
     override fun onCleared() {
         super.onCleared()
-        Log.d("M_ProfileViewModel", "view model cleared")
     }
 
-    fun getProfileData() : LiveData<Profile> = profileData
+    fun getProfileData(): LiveData<Profile> = profileData
 
-    fun getTheme() : LiveData<Int> = appTheme
+    fun getTheme(): LiveData<Int> = appTheme
+
+    fun getRepoError(): LiveData<Boolean> = repositoryError
 
     fun saveProfileData(profile: Profile) {
         repository.saveProfile(profile)
@@ -34,13 +39,26 @@ class ProfileViewModel : ViewModel() {
     }
 
     fun switchTheme() {
-        if (appTheme.value == AppCompatDelegate.MODE_NIGHT_YES){
-                appTheme.value = AppCompatDelegate.MODE_NIGHT_NO
-        }else{
+        if (appTheme.value == AppCompatDelegate.MODE_NIGHT_YES) {
+            appTheme.value = AppCompatDelegate.MODE_NIGHT_NO
+        } else {
             appTheme.value = AppCompatDelegate.MODE_NIGHT_YES
         }
-
         repository.saveAppTheme(appTheme.value!!)
-
     }
+
+    fun onRepoChanged(repository: String) {
+        repositoryError.value = !repoValidator(repository)
+    }
+
+    fun onRepoEditCompleted(isError: Boolean) {
+        isRepoError.value = isError
+    }
+
+    private fun repoValidator(repo: String): Boolean {
+        return Utils.validator(repo)
+    }
+
+
+
 }

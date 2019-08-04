@@ -25,27 +25,27 @@ fun Date.add (value:Int, units: TimeUnits = TimeUnits.SECOND):Date {
         TimeUnits.MINUTE -> value* MINUTE
         TimeUnits.HOUR -> value* HOUR
         TimeUnits.DAY -> value* DAY
-            }
+    }
     this.time = time
     return this
 }
 
 fun Date.humanizeDiff(date: Date = Date()):String {
 
-        val time = date.time
-        val diffSec = if(time>getTime()){(time - getTime())/1000}else{(time-getTime())/1000-1}
-        val diffMin = diffSec/60
-        val diffHour = diffMin/60
-        val diffDay = diffHour/24
+    val time = date.time
+    val diffSec = if(time>getTime()){(time - getTime())/1000}else{(time-getTime())/1000-1}
+    val diffMin = diffSec/60
+    val diffHour = diffMin/60
+    val diffDay = diffHour/24
     //println (diffMin)
 
     if (abs(diffSec.toInt()) in 1..75){
         if (diffSec in 0..1) return "только что"
         if (diffSec in 1..45) return "несколько секунд назад"
         if (diffSec in 45..75) return "минуту назад"
-            //  when {
-            //diffSec > 0 -> return Utils.humaSec(diffSec,"назад","")
-            //diffSec < 0 -> return Utils.humaSec(abs(diffSec),"","через")
+        //  when {
+        //diffSec > 0 -> return Utils.humaSec(diffSec,"назад","")
+        //diffSec < 0 -> return Utils.humaSec(abs(diffSec),"","через")
         //}
     }
 
@@ -95,7 +95,6 @@ enum class TimeUnits{
 
     fun plural(value: Int): String {
 
-    return Plurals.pushPlural(value,this)
+        return Plurals.pushPlural(value,this)
     }
 }
-
